@@ -39,7 +39,9 @@ def isSolvable(matrix):
                 continue
             inv += tree.range(int(j),l-1)
             tree.insert(int(j))
-    print("num of inversions is " , inv)
+# =============================================================================
+#     print("num of inversions is " , inv)
+# =============================================================================
     if inv%2 == 0:
         return True
     return False
