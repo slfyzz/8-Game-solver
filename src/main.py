@@ -1,8 +1,8 @@
-from Solver import Solver
-from Fringe import Queue, Stack, PriorityQueue
-from priorityCalc import ManhattanDistance, EuclideanDistance
-from gui import GUI
-from validator import isSolvable
+from src.Solver import Solver
+from src.Fringe import Queue, Stack, PriorityQueue
+from src.priorityCalc import ManhattanDistance, EuclideanDistance
+from src.gui import GUI
+from src.validator import isSolvable
 gui = GUI()
 inputMatrix = gui.getInputMatrix()
     
@@ -12,11 +12,9 @@ if not solvable :
 else :
     x = Solver(Stack(),initial_state=inputMatrix)
     a, b, c = x.solve()
-    print(a, b, c.matrix)
-    
-    while c.prevState is not None:
-        gui.appendBoard(c.matrix)
-        c = c.prevState
-    gui.appendBoard(c.matrix)
+
+    while c is not None:
+        gui.appendBoard(c.getCurrentState())
+        c = c.getPrevState()
     
     gui.showTrace()

@@ -1,6 +1,6 @@
-from state import State
-from Fringe import Fringe
-from config import *
+from src.state import State
+from src.Fringe import Fringe
+from src.config import *
 
 
 class Solver:
@@ -17,13 +17,12 @@ class Solver:
         while not self.fringe.isEmpty():
             state = self.fringe.pop()
             self.count += 1
-            if TRACK_VISITED_NODE and state.matrix in seen:
+            if TRACK_VISITED_NODE and state.getCurrentState() in seen:
                 continue
 
-            seen.add(state.matrix)
-            if state.matrix == DEFAULT_GOAL_STATE:
+            seen.add(state.getCurrentState())
+            if state.equals(DEFAULT_GOAL_STATE):
                 return "SUCCESS", self.count, state
             for exp in state.expand():
                 self.fringe.push(exp)
-
         return "FAIL", self.count, None
