@@ -48,4 +48,5 @@ def isValidInput(s,l):
     c = int(s)
     if c < 0 or c >= l :
         return False
+    return True
     
