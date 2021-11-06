@@ -56,9 +56,6 @@ class GUI(object):
     def buildEntry(self, i, j):
 
         sv = tk.StringVar()
-        if self.matrix[i][j] != -1:
-            self.enterdNumber[int(self.matrix[i][j])] = 0
-
         sv.trace("w", lambda name, index, mode, sv=sv: self.callback(sv, i, j))
 
         entry = tk.Entry(self.root, relief=tk.GROOVE, textvariable=sv)
