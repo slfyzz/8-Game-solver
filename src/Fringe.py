@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from queue import PriorityQueue as PriorityLinkedList, Queue as LinkedList
-from src.state import State
+from state import State
 
 
 class Fringe(ABC):

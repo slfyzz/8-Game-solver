@@ -1,6 +1,6 @@
-from src.state import State
-from src.Fringe import Fringe
-from src.config import *
+from state import State
+from Fringe import Fringe
+from config import *
 
 
 class Solver:
