@@ -1,6 +1,6 @@
-from src.state import State
-from src.Fringe import Fringe
-from src.config import *
+from state import State
+from Fringe import Fringe
+from config import *
 
 
 class Solver:
@@ -22,7 +22,7 @@ class Solver:
 
             seen.add(state.matrix)
             if state.matrix == DEFAULT_GOAL_STATE:
-                return "Success", self.count, state
+                return "SUCCESS", self.count, state
             for exp in state.expand():
                 self.fringe.push(exp)
 
