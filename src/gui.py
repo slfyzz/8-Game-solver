@@ -1,20 +1,18 @@
 import tkinter as tk
-from validator import isValidInput
+from validator import *
 
 
 class GUI(object):
 
-    def __init__(self, n=5, m=3):
+    def __init__(self,n = 3 ,m  = 3):
         self.root = tk.Tk()
         self.boardsCounter = 0
-        self.cnt = 0
         self.n = n
         self.m = m
-        self.matrix = [["" for i in range(n)] for i in range(m)]
-        self.enterdNumber = [0 for i in range(n * m)]
+        self.lastmatrix = [[ "" for i in range(m)] for j in range(n)]
 
     def appendBoard(self, matrix):
-        startRow = self.boardsCounter * self.n1 + 1
+        startRow = self.boardsCounter * self.n + 1
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
                 e = tk.Entry(relief=tk.GROOVE)
@@ -46,8 +44,12 @@ class GUI(object):
             entries.append(row)
 
         def assignValues():
-            if self.cnt < self.n * self.m:
-                return
+            
+            matrixState = getMatrixState(self.lastmatrix)
+            if not matrixState.isValid():
+                self.ShowScreenn(matrixState.message())
+                return 
+    
             for r in entries:
                 row = []
                 for e in r:
@@ -70,22 +72,14 @@ class GUI(object):
         s = sv.get()
         l = len(s)
         if l == 0:
-            self.enterdNumber[int(self.matrix[i][j])] = 0
-            self.matrix[i][j] = ""
-            self.cnt -= 1
+            self.lastmatrix[i][j] = ""
             return
 
         if not isValidInput(s, self.n * self.m):
-            sv.set(self.matrix[i][j])
+            sv.set(self.lastmatrix[i][j])
             return
-
-        if self.enterdNumber[int(s)] == 1:
-            sv.set(self.matrix[i][j])
-        else:
-            
-            self.enterdNumber[int(s)] = 1
-            self.matrix[i][j] = s
-            self.cnt += 1
+        self.lastmatrix[i][j] = s
+        pass
 
 
     def buildEntry(self, i, j):
@@ -95,3 +89,8 @@ class GUI(object):
 
         entry = tk.Entry(self.root, relief=tk.GROOVE, textvariable=sv)
         return entry
+    def ShowScreenn(self,msg):
+        top= tk.Toplevel(self.root)
+        top.geometry("750x250")
+        top.title("Child Window")
+        tk.Label(top, text= msg, font=('Mistral 18 bold')).place(x=150,y=80)

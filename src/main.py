@@ -3,9 +3,10 @@ from Fringe import Queue, Stack, PriorityQueue
 from priorityCalc import ManhattanDistance, EuclideanDistance
 from gui import GUI
 from validator import isSolvable
+
 gui = GUI()
 inputMatrix = gui.getInputMatrix()
-    
+
 solvable = isSolvable(inputMatrix)
 if not solvable :
     print("not solvable ")
