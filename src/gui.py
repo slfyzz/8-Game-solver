@@ -52,9 +52,8 @@ class GUI(object):
             self.update(boards[self.index])
 
         def goal():
-            for i in range(self.index,len(boards)):
-                next()
-                time.sleep(.2)
+            self.index = len(boards) - 1
+            self.update(boards[self.index])
                 
         nextButton = tk.Button(self.root, text="next", command=next)
         prevButton = tk.Button(self.root, text="prev", command=prev)
