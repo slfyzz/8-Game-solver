@@ -15,6 +15,7 @@ class Solver:
         seen = set()
 
         while not self.fringe.isEmpty():
+            print(self.count)
             state = self.fringe.pop()
             self.count += 1
             if TRACK_VISITED_NODE and state.getCurrentState() in seen:

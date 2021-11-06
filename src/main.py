@@ -14,8 +14,10 @@ else :
     x = Solver(Stack(),initial_state=inputMatrix)
     a, b, c = x.solve()
 
+    lst = []
     while c is not None:
-        gui.appendBoard(c.getCurrentState())
+        lst.append(c.getCurrentState())
         c = c.getPrevState()
-    
-    gui.showTrace()
+
+    lst.reverse()
+    gui.showTrace(lst)
