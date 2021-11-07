@@ -1,10 +1,11 @@
-from Solver import Solver
-from Fringe import Queue, Stack, PriorityQueue
-from priorityCalc import ManhattanDistance, EuclideanDistance
-from gui import GUI
-from validator import isSolvable
+from implementation.Solver import Solver
+from implementation.Fringe import Queue, Stack, PriorityQueue
+from implementation.priorityCalc import ManhattanDistance, EuclideanDistance
+from UI.gui.gui import GUI
+from statistcs.statistics import Statics
 
 
+#Statics().compare()
 # Factory method from Queues
 def getFringe(strategyType):
     if strategyType == 'BFS':
@@ -36,21 +37,15 @@ def createGoal(n, m):
 gui = GUI()
 inputMatrix, strategy = gui.getInputMatrix()
 
-# Check if it's solvable.
-solvable = isSolvable(inputMatrix)
 
-# If it's not solvable, escape all these computations
-if not solvable:
-    print("It's not solvable")
-else:
-    x = Solver(getFringe(strategy), initial_state=inputMatrix, goal=createGoal(len(inputMatrix), len(inputMatrix[0])))
-    a, b, c = x.solve()
+x = Solver(getFringe(strategy), initial_state=inputMatrix, goal=createGoal(len(inputMatrix), len(inputMatrix[0])))
+a, b, c = x.solve()
 
-    lst = []
-    while c is not None:
-        lst.append(c.getCurrentState())
-        c = c.getPrevState()
+lst = []
+while c is not None:
+    lst.append(c.getCurrentState())
+    c = c.getPrevState()
 
-    lst.reverse()
-    x.ShowInfo()
-    gui.showTrace(lst)
+lst.reverse()
+x.ShowInfo()
+gui.showTrace(lst)

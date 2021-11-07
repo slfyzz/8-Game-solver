@@ -1,8 +1,8 @@
-from state import State
-from Fringe import Fringe
-from config import *
+from implementation.state import State
+from implementation.Fringe import Fringe
+from implementation.config import *
 from datetime import datetime
-from info import Info
+from implementation.info import Info
 
 
 class Solver:
@@ -29,10 +29,9 @@ class Solver:
 
         while not self.fringe.isEmpty():
             state = self.fringe.pop()
-            self.count += 1
             if TRACK_VISITED_NODE and state.getCurrentState() in seen:
                 continue
-
+            self.count += 1
             # Remember that state.
             seen.add(state.getCurrentState())
             # If it's the goal, then WOHOO found it

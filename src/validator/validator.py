@@ -1,4 +1,4 @@
-from matrixState import *
+from validator.matrixState import *
 
 class fenwick :
     

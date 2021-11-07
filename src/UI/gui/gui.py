@@ -1,8 +1,8 @@
 import tkinter as tk
 # import ttk as ttk
 
-from validator import *
-import config as conf
+from validator.validator import *
+import implementation.config as conf
 class GUI(object):
 
     def __init__(self,n = conf.n ,m  = conf.m):

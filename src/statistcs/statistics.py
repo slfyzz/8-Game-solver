@@ -1,11 +1,11 @@
 from datetime import datetime
 import random
-import config
-from validator import isSolvable
-from Fringe import Queue, Stack, PriorityQueue
-from priorityCalc import ManhattanDistance , EuclideanDistance
-from Solver import Solver
-from printer import Printer
+import implementation.config as config
+from validator.validator import isSolvable
+from implementation.Fringe import Queue, Stack, PriorityQueue
+from implementation.priorityCalc import ManhattanDistance , EuclideanDistance
+from implementation.Solver import Solver
+from UI.printer import Printer
 
 
 class Statics :
@@ -14,9 +14,7 @@ class Statics :
         self.n = n 
         self.m =m 
         self.state = [i for i in range (n * m )]
-        self.seed = .01221
-        self.shift = .08235
-        
+        self.last = [0 for i in range(n * m )]
     def convertToMatrix(self,arr):
         mat = []
         cur = 0 
@@ -33,23 +31,18 @@ class Statics :
     
     
     def getSeed(self):
-        self.seed += self.shift
-        if self.seed >=1 :
-            self.seed -=1
-            self.shift += .0785
-            if self.shift >= 1:
-                self.shift -=1
-            
-        return 1 - self.seed 
+        return (datetime.now().microsecond%1000) / 1000
+       
     
     
     def generateRandomInitialGrid(self):
         
         random.shuffle(self.state,self.getSeed)
         mat = self.convertToMatrix(self.state)
-        while not isSolvable(mat) :
+        while mat==self.last or not isSolvable(mat)  :
             random.shuffle(self.state,self.getSeed)
             mat = self.convertToMatrix(self.state)
+        self.last = mat    
         return mat
         
         

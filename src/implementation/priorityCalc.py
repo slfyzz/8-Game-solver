@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from state import State
+from implementation.state import State
 from math import *
 
 

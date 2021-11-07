@@ -1,4 +1,4 @@
-from printer import Printer 
+from UI.printer import Printer 
 class Info:
       
              
