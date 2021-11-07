@@ -1,13 +1,14 @@
-directions = [1, -1, 0, 0]
-
-
 class State(object):
     def __init__(self, matrix: tuple, priority=0, prev_state=None):
+        # Should all these values to be immutable.
         self._matrix = matrix
         self._priority = priority
         self._prevState = prev_state
 
     def expand(self):
+        # expanding is just moving zero around, so we can find the zero and then
+        # tries all possible moves, then returns all states.
+        directions = [1, -1, 0, 0]
         i, j = self.findZero()
         ans = []
         limit = len(self._matrix)
@@ -15,6 +16,7 @@ class State(object):
             # new place for the zero
             x = directions[z] + i
             y = directions[3 - z] + j
+            # Check if it's valid.
             if 0 <= x < limit and 0 <= y < limit and \
                     (self._prevState is None or self._prevState.getCurrentState()[x][y] != 0):
                 ans.append(self.createState(i, j, x, y))
