@@ -16,10 +16,10 @@ def getFringe(strategyType):
         return Stack()
     elif strategyType == 'A* with Manhattan':
         print("Manhattan")
-        return PriorityQueue(ManhattanDistance)
+        return PriorityQueue(ManhattanDistance())
     else:
         print("Euclidean")
-        return PriorityQueue(EuclideanDistance)
+        return PriorityQueue(EuclideanDistance())
 
 
 # To create different default goals.
