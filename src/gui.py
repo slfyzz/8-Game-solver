@@ -1,7 +1,8 @@
 import tkinter as tk
+# import ttk as ttk
+
 from validator import *
 import config as conf
-import time as time
 class GUI(object):
 
     def __init__(self,n = conf.n ,m  = conf.m):
@@ -88,14 +89,19 @@ class GUI(object):
                 matrix.append(row)
             self.root.destroy()
 
+        choices = ['BFS', 'DFS', 'A* with Manhattan','A* with Euclidean']
+        variable = tk.StringVar(self.root)
+        variable.set('BFS')
+        combo = tk.OptionMenu(self.root, variable , *choices)
+        combo.grid(row=self.n, column=int(self.m/2))
         button = tk.Button(self.root, text="Solve", command=assignValues)
-        button.grid(row=self.n, column=int(self.m/2))
+        button.grid(row=self.n+1, column=int(self.m/2))
         tk.mainloop()
         for i in range(0, len(matrix)):
             matrix[i] = tuple(matrix[i])
         matrix = tuple(matrix)
 
-        return matrix
+        return matrix , variable.get()
 
 
 
