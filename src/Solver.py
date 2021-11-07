@@ -43,3 +43,6 @@ class Solver:
     def getInfo(self):
         return Info(self.cost,self.count,self.maxDepth,str((self.end - self.start).total_seconds()) +" Second")
         
+    def ShowInfo(self):
+        self.getInfo().printInfo()
+        print()

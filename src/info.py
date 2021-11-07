@@ -1,25 +1,7 @@
 from printer import Printer 
 class Info:
-    
-    __instance = None
-    
-    
-# =============================================================================
-#    @staticmethod 
-#    def getInstance():
-#       if Info.__instance == None:
-#          Info()
-#       return Info.__instance
-#   
-#     
-#    def __init__(self):
-#       if Info.__instance != None:
-#          raise Exception("This class is a singleton!")
-#       else:
-#          Singleton.__instance = self
-#          
-# =============================================================================
-         
+      
+             
          
     def __init__(self, cost , nodesExpanded , searchDepth , runningTime):
         self.cost = cost

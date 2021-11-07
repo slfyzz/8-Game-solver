@@ -17,7 +17,7 @@ class Printer :
         pass
 
 
-    def printKeyAndValue(self,key,value):
+    def printKeyAndValue(self,key,value ):
         print(bcolors.OKGREEN+key," :", end =" "),
         print( bcolors.OKBLUE + str(value) ,end =" ")
         pass
