@@ -17,9 +17,9 @@ class Printer :
         pass
 
 
-    def printKeyAndValue(self,key,value ):
-        print(bcolors.OKGREEN+key," :", end =" "),
-        print( bcolors.OKBLUE + str(value) ,end =" ")
+    def printKeyAndValue(self,key,value,e ):
+        print(bcolors.OKGREEN+key," :", end =e),
+        print( bcolors.OKBLUE + str(value) ,end =e)
         pass
     
     def printMatrix(self , mat) :

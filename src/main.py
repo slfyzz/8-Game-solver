@@ -6,7 +6,7 @@ from validator import isSolvable
 from statistics import Statics
 
 
-#Statics().compare()
+# Statics().compare()
  
 gui = GUI()
 inputMatrix = gui.getInputMatrix()
